@@ -19,6 +19,6 @@ using namespace std;
 
 
 int main(){
-  print_word();
+  print_hello();
 }
 

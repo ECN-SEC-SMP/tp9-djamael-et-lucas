@@ -11,6 +11,6 @@
 
 using namespace std;
 
-void print_word(){
+void print_hello(){
   cout << "Hello World" << endl;
 }

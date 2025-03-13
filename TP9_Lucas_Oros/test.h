@@ -5,7 +5,7 @@
 #include <iostream>
 #include <vector>
 
-void print_word();
+void print_hello();
 
 
 

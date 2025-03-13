@@ -171,4 +171,70 @@ void partie2(){
     affiche(v);
 }
 
+//Les Listes
+void partie3(){
+    // Creation d'une liste de huit entiers
+    list<int> list1 = {1, 2, 3, 4, 5, 6, 7, 8};
+
+    // Supprimer le troisieme element
+    list<int>::iterator it = list1.begin();
+    advance(it, 2);
+    list1.erase(it);
+
+    // Afficher la liste
+    for(list<int>::iterator it = list1.begin(); it != list1.end(); it++){
+        cout << *it << " ";
+    }
+}
+
+
+//Construisez une fonction ajoute_evenement qui ajoute un événement (date, intitulé) dans votre structure que vous passerez en paramètre M[clé]=valeur ou M.insert(std::make_pair(clé,valeur))
+// Il faut séparer les cas où l’on ajoute un événement dans une liste déjà existante, du cas où il faut ajouter une nouvelle liste dans la map
+void ajoute_evenement(map<int, list<string>> &m, int date, string event){
+    if(m.find(date) == m.end()){ // Si la date n'existe pas
+        list<string> l; // On crée une nouvelle liste l
+        l.push_back(event); // On ajoute l'événement à la liste
+        m.insert(make_pair(date, l)); // On insère la liste dans la map
+    }else{
+        m[date].push_back(event); // On ajoute l'événement à la liste existante
+    }
+    cout << "Evenement " << event << " ajoute a la date " << date << endl;
+    cout << endl;
+}
+
+// fonction qui affiche l’ensemble des dates et des événements associés.
+void affiche_evenements(map<int, list<string>> &m){
+    for(map<int, list<string>>::iterator it = m.begin(); it != m.end(); it++){
+        cout << it->first << ": ";
+        for(list<string>::iterator it2 = it->second.begin(); it2 != it->second.end(); it2++){
+            cout << *it2 << " ";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+//Les Maps
+void partie4(){
+    map<int, list<string>> m;
+    m[2020].push_back("Event1");
+    m[2020].push_back("Event2");
+    m[2020].push_back("Event3");
+    m[2021].push_back("Event4");
+    m[2021].push_back("Event5");
+    m[2022].push_back("Event6");
+    m[2023].push_back("Event7");
+
+    // Afficher la map
+    affiche_evenements(m);
+
+    // Ajouter un événement à la date 2020
+    ajoute_evenement(m, 2020, "Event8");
+    // Ajouter un événement à la date 2024
+    ajoute_evenement(m, 2024, "Event9");
+
+    // Afficher la map
+    affiche_evenements(m);
+}
+
 

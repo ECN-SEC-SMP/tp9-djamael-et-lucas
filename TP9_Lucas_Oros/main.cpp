@@ -14,11 +14,7 @@
 using namespace std;
 
 
-
-
-
-
 int main(){
-  print_hello();
+    partie1();
 }
 

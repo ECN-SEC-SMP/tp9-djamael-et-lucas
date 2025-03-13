@@ -237,4 +237,3 @@ void partie4(){
     affiche_evenements(m);
 }
 
-

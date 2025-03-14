@@ -19,6 +19,6 @@ int main(){
     //partie2();
     //partie3();
     //partie4();
-    partie5();
+    partie5(); 
 }
 

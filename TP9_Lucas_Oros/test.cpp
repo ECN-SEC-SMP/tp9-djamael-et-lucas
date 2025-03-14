@@ -237,3 +237,15 @@ void partie4(){
     affiche_evenements(m);
 }
 
+//Lecture/écriture de fichiers cvs
+void partie5(){
+    CVS c;
+    c.read("dates.csv"); // Lecture du fichier dates.csv
+    c.affiche_evenements(); // Affichage des événements
+    
+    c.ajoute_evenement(2020, "Event8"); // Ajout de l'événement Event8 à la date 2020
+    c.ajoute_evenement(2025, "Event9"); // Ajout de l'événement Event9 à la date 2024
+    c.ajoute_evenement(410, "Event10"); // Ajout de l'événement Event10 à la date 410
+    c.affiche_evenements(); // Affichage des événements
+    c.write("dates2.csv"); // Ecriture des événements dans le fichier dates2.csv
+}   

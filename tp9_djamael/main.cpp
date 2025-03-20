@@ -9,7 +9,36 @@ But : Fichier principale
 #include <iostream>
 #include <algorithm>
 #include <list>
+#include <map>
 using namespace std;
+
+// Fonction qui ajoute un événement dans le calendrier.
+// Si l'année existe déjà, on ajoute l'événement à la liste existante.
+// Sinon, on crée une nouvelle entrée dans la map avec une nouvelle liste.
+void ajoute_evenement(map<int, list<string>> &calendrier, int annee, const string &evenement) {
+    // Recherche si l'année existe déjà dans la map
+    auto it = calendrier.find(annee);
+    if (it != calendrier.end()) {
+        // L'année existe, on ajoute l'événement à la liste
+        it->second.push_back(evenement);
+    } else {
+        // L'année n'existe pas, on crée une nouvelle liste contenant l'événement
+        calendrier.insert(make_pair(annee, list<string>{evenement}));
+    }
+}
+
+// Fonction qui affiche l'ensemble des dates et des événements associés.
+void affiche_calendrier(const map<int, list<string>> &calendrier) {
+    // Parcours de la map avec un itérateur (les années sont automatiquement triées)
+    for (auto it = calendrier.begin(); it != calendrier.end(); ++it) {
+        cout << "Année: " << it->first << endl;
+        // Parcours de la liste d'événements pour chaque année
+        for (auto eventIt = it->second.begin(); eventIt != it->second.end(); ++eventIt) {
+            cout << "   - " << *eventIt << endl;
+        }
+        cout << endl;
+    }
+}
 // Définition du foncteur
 class AjouteVirgule
 {
@@ -235,4 +264,18 @@ int main()
         cout << *iter << " ";
     }
     cout<<endl<<endl;
+
+    //  ----------------[ Partie 3 : Les Maps]-------------------
+     // Création d'une map associant une année à une liste d'événements
+     map<int, list<string>> calendrier;
+
+     // Jeux d'essais avec des dates historiques et des descriptions associées
+     ajoute_evenement(calendrier, 1415, "Bataille d'Azincourt");
+     ajoute_evenement(calendrier, 1789, "Révolution française");
+     ajoute_evenement(calendrier, 1789, "Déclaration des droits de l'homme et du citoyen");
+     ajoute_evenement(calendrier, 1914, "Début de la Première Guerre mondiale");
+     ajoute_evenement(calendrier, 1969, "Apollo 11");
+ 
+     // Affichage de l'ensemble des dates et événements associés
+     affiche_calendrier(calendrier);
 }

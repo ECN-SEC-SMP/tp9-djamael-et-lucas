@@ -14,11 +14,11 @@
 using namespace std;
 
 
-
-
-
-
 int main(){
-  print_hello();
+    //partie1();
+    //partie2();
+    //partie3();
+    //partie4();
+    partie5(); 
 }
 
